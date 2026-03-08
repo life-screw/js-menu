@@ -1,0 +1,25 @@
+on:
+  push:
+    branches:
+      - main # テスト環境なら dev など別ブランチでも可
+
+name: FTP 自動デプロイ (テスト)
+
+jobs:
+  ftp-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: コードをチェックアウト
+        uses: actions/checkout@v4
+
+      - name: SFTP デプロイ (SSH鍵認証)
+        uses: easingthemes/ssh-deploy@main
+        with:
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+          REMOTE_HOST: ${{ secrets.FTP_HOSTNAME }}
+          REMOTE_USER: ${{ secrets.FTP_USERNAME }}
+          REMOTE_PORT: 22
+          SOURCE: "./"
+          TARGET: "www/liscrew.jp/blog/sample/"
+          EXCLUDE: ".git*,.github/,node_modules/,dev/,package*.json,yarn.lock,gulpfile.js"
+          ARGS: "-rlgoDzvc -i"
