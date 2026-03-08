@@ -20,6 +20,6 @@ jobs:
           REMOTE_USER: ${{ secrets.FTP_USERNAME }}
           REMOTE_PORT: 22
           SOURCE: "./"
-          TARGET: "www/liscrew.jp/blog/sample/"
-          EXCLUDE: ".git*,.github/,node_modules/,dev/,package*.json,yarn.lock,gulpfile.js"
+          TARGET: "www/liscrew.jp/blog/sample/js-menu/"
+          EXCLUDE: ".git*,.github*,.claude/,/,node_modules/,src/,dev/,package*.json,yarn.lock,gulpfile.js"
           ARGS: "-rlgoDzvc -i"
