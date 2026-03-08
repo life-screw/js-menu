@@ -1,0 +1,401 @@
+@use "sass:math";
+@use "../../Setting/" as s;
+// ハンバーガーメニューのアニメーション-------
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+/*ハンバーガーメニュー ボタン*/
+.l-humnav {
+  $this: &;
+  display: none;
+
+  align-items: center;
+  padding-top: min(218px, s.vw(s.$spDesign, 218));
+
+  z-index: 999;
+  width: 100%;
+  height: 100svh;
+  position: fixed;
+  top: 0;
+  right: 0;
+  overflow-x: hidden;
+  overflow-y: auto; //これ入れないとスクロールしない
+
+  //opacity: 0;
+  //transition: opacity .3s ease .2s;
+
+  @include s.media(md) {
+    /*PCのみ*/
+    // PCではハンバーガーメニューを使わない時---
+    display: block;
+    padding-top: 0;
+    position: static;
+    height: auto;
+    overflow: visible;
+    // PCもハンバーガーメニューを使用する時---
+    // padding-top: calc(68px + 5vh);
+    //min-height: 790px;
+  }
+
+  &__inner {
+    width: 100%;
+    padding: 0 25px 120px;
+    opacity: 0;
+
+    @include s.media(md) {
+      /*PCのみ*/
+      position: relative; //PCのメガメニューは、ホバーで表示させるため、通常はrelativeに配置しておく
+      width: fit-content;
+      margin-left: auto;
+      // PCではハンバーガーメニューを使わない時---
+      opacity: 1;
+      padding: 0;
+      // PCもハンバーガーメニューを使用する時---
+      //   padding-right: 82px;
+      //   margin-bottom: 50px;
+      display: flex;
+      justify-content: flex-end;
+      //   width: min(1050px, s.vw(s.$pcContainer, 1050));
+    }
+  }
+
+  //クリックした時(ハンバーガーメニュー表示)
+  &.is-active {
+    //display: flex;
+    display: block; //display: flex ではoverflow-yが効かない
+
+    //opacity: 1;
+    #{$this}__inner {
+      animation-delay: 0.2s;
+      animation-name: fadeIn;
+      animation-duration: 0.3s;
+      animation-iteration-count: 1; //実行回数
+      animation-fill-mode: forwards; //アニメーション再生後は最後のキーフレーム（100%）を適応
+    }
+  }
+}
+
+//ハンバーガメニューフォント
+%humMenuA {
+  //   @extend %en-font;
+  display: inline-block;
+  // フォントサイズ, 行送り , 太さ, トラッキング
+  @include s.f_sp-min_around(16, false, 500, false);
+  padding: 1.2em 0;
+  color: var(--color-main);
+  min-height: 42px;
+  display: flex;
+  align-items: baseline;
+
+  // @media only screen and (max-width: 370px) {
+  //   /*スマホで小さい画面の時*/
+  //   //line-height: 3.2;
+  //   padding: 1em 0;
+  // }
+  &:hover {
+    @media (hover: hover) {
+      // ホバー可能なデバイス（主にPC）のみ
+      opacity: 1;
+    }
+  }
+
+  @include s.media(md) {
+    /*PCのみ*/
+    font-size: min(18px, s.vw(s.$pcContainer, 18));
+  }
+}
+
+//ハンバーガーメニュー
+.l-humnav-main,
+.l-humnav-sub {
+  //margin-top: calc(62px + 6vh);
+
+  &__list {
+    text-align: left;
+    @include s.media(md) {
+      //PC大型の時
+
+      margin-left: min(30px, s.vw(s.$pcContainer, 30));
+      display: flex;
+      align-items: center;
+    }
+
+    &-box {
+      display: flex;
+      align-items: center;
+      border-bottom: 1px solid var(--color-main);
+      @include s.media(md) {
+        //タブレット・pcの時
+        border: none;
+        height: 100%;
+      }
+
+      & > a,
+      .a-tag {
+        @extend %humMenuA;
+        position: relative;
+        overflow: visible;
+        transition: color 0.5s cubic-bezier(0.51, 0.21, 0.41, 1);
+        cursor: pointer;
+        @include s.media(md) {
+          //PC大型の時
+          padding: 0;
+          align-items: center;
+          height: 100%;
+        }
+        &:after {
+          transition: all 0.5s cubic-bezier(0.51, 0.21, 0.41, 1);
+          content: "";
+          display: block;
+          position: absolute;
+          inset: auto 0 0 0; /* top right bottom left */
+          width: 100%;
+          height: 3px;
+          background: var(--key-color);
+          opacity: 0;
+        }
+        &:hover {
+          @media (hover: hover) {
+            // ホバー可能なデバイス（主にPC）のみ
+            opacity: 1;
+            color: var(--key-color);
+            &:after {
+              opacity: 1;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.l-humnav-main {
+  @include s.media(md) {
+    //PC大型の時
+    display: flex;
+    background: #fff;
+    border: 1px solid #fff;
+    border-radius: 15px;
+    padding-left: min(70px, s.vw(s.$pcContainer, 70));
+    padding-right: min(70px, s.vw(s.$pcContainer, 70));
+  }
+  &__list {
+    a {
+      @include s.media(md) {
+        //タブレット・pcの時
+        padding: 1em 0;
+      }
+    }
+  }
+}
+.l-humnav-sub {
+  @include s.media(md) {
+    //PCの時
+    display: none;
+  }
+
+  &__list {
+    text-align: left;
+
+    a {
+      color: var(--color-main);
+      // フォントサイズ, 行送り , 太さ, トラッキング
+      @include s.f_sp-min_around(16, false, 500, false);
+      padding: 1em 0;
+      display: flex;
+      align-items: center;
+      //   line-height: 1;
+      @include s.media(md) {
+        //タブレット・pcの時
+        font-size: min(18px, s.vw(s.$pcContainer, 18));
+      }
+      &::after {
+        content: "";
+        display: block;
+        margin: auto 0;
+        margin-left: 1em;
+        // position: absolute;
+        // top: 0;
+        // bottom: 0;
+        // right: 0;
+        width: 0.5em;
+        height: 0.5em;
+        border-right: 1px solid var(--color-main);
+        border-top: 1px solid var(--color-main);
+        transform: translateX(-25%) rotate(45deg); // 右向き
+      }
+    }
+  }
+}
+
+/*SPアコーディオンメニュー*/
+
+@include s.media(mdmax) {
+  //タブレット・スマホの時のみ
+
+  .l-humnav-main__list--has-sub {
+    position: relative;
+
+    .l-humnav-main__list-toggle {
+      background: none;
+      border: none;
+      margin-left: 1em;
+      width: 48px;
+      height: 48px;
+      //   position: absolute;
+      //   right: 0;
+      //   top: 0;
+      position: relative;
+      cursor: pointer;
+
+      @include s.media(md) {
+        //タブレット・pcの時
+        display: none;
+      }
+
+      // 質問の右端の矢印
+      &::after {
+        content: "";
+        display: block;
+        margin: auto;
+        position: absolute;
+        top: 0;
+        right: 0.5em;
+        bottom: 0;
+        width: min(20px, s.vw(s.$spDesign, 20));
+        height: min(20px, s.vw(s.$spDesign, 20));
+        border-right: 1px solid var(--color-main);
+        border-bottom: 1px solid var(--color-main);
+
+        // transform: translate(-25%, -250%) rotate(45deg);
+        transform: translate(-50%, -50%) rotate(45deg); // 中央に配置
+        transform-origin: left;
+        // transform-origin: left;
+        transition-property: transform;
+        transition-duration: 200ms;
+        transition-timing-function: ease;
+      }
+    }
+
+    //クリックした時
+    &.is-active {
+      .l-humnav-main__list-toggle {
+        &:after {
+          // transform: translate(-25%, -250%) rotate(-135deg);
+          transform: translate(-50%, -50%) rotate(-135deg); // 中央に配置
+          transform-origin: bottom;
+        }
+      }
+
+      .l-humnav-sub {
+        display: block;
+        position: static;
+        background: none;
+        width: auto;
+        padding-top: 1em;
+        padding-bottom: 1em;
+      }
+    }
+  }
+}
+/*PCアコーディオンメニュー*/
+//PCのメガメニュー=====
+.l-humnav-sub-wrap {
+  display: none; //初期は非表示
+  position: absolute; //PCのメガメニューは、ホバーで表示させるため、絶対配置にする
+  left: 0;
+  top: calc(
+    100% - 1px
+  ); //メインメニューの下に配置。borderの1px分を引くことで、メインメニューと隙間なく配置できる。
+  padding-top: min(28px, s.vw(s.$pcContainer, 28));
+
+  /*アニメーション*/
+  transition: opacity 0.5s cubic-bezier(0.51, 0.21, 0.41, 1),
+    filter 0.5s cubic-bezier(0.51, 0.21, 0.41, 1);
+  opacity: 0;
+  filter: blur(5px);
+  @include s.media(md) {
+    //タブレット・pcの時
+    width: 100%;
+    z-index: -1; //PCのメガメニューは、ホバーで表示させるため、通常は背面に配置しておく
+  }
+
+  &__inner {
+    border-radius: 15px;
+    background: rgba(255, 255, 255, 0.9);
+    padding: min(60px, s.vw(s.$pcContainer, 60));
+  }
+
+  &__title {
+    font-size: min(25px, s.vw(s.$pcContainer, 25));
+    border-bottom: 1px solid var(--color-main);
+    padding-bottom: 0.3em;
+    margin-bottom: 0.8em;
+  }
+
+  .l-humnav-sub {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    // gap: min(7px, s.p(s.$pcContainer, 7)); //横の間をminで設定
+    padding: 0;
+    //子要素に、以下を設定
+    > * {
+      flex: 1 1 50%; //子要素の幅を同一にする
+    }
+
+    &__list {
+      padding: 0;
+      margin-left: 0;
+      text-align: left;
+      a {
+        font-size: min(18px, s.vw(s.$pcContainer, 18));
+        &:after {
+          display: none;
+        }
+        &::before {
+          border-right: 1px solid var(--color-main);
+          border-top: 1px solid var(--color-main);
+          content: "";
+          display: block;
+          height: 0.5em;
+          margin: auto 0;
+          margin-right: 0.5em;
+          transform: translateX(-25%) rotate(45deg);
+          width: 0.5em;
+        }
+      }
+    }
+  }
+}
+
+/*ホバーアクションでメガメニューを表示*/
+.l-humnav-main__list--has-sub {
+  // position: relative;
+
+  &.is_active {
+    z-index: 10; //ホバーで表示させるため、前面に配置
+    .l-humnav-main__list-box > a,
+    .a-tag {
+      color: var(--key-color);
+      &::after {
+        opacity: 1;
+        //background: url(../../dist/img/) no-repeat center center / contain;
+        background: var(--key-color); //url(#{s.$imgPath}hoge.svg);
+      }
+    }
+    .l-humnav-sub-wrap {
+      opacity: 1;
+      filter: blur(0);
+      transition: opacity 0.5s cubic-bezier(0.51, 0.21, 0.41, 1) 0.1s,
+        filter 0.5s cubic-bezier(0.51, 0.21, 0.41, 1) 0.1s;
+      z-index: 10; //ホバーで表示させるため、前面に配置
+    }
+  }
+}

@@ -1,0 +1,103 @@
+@use "sass:math";
+@use "sass:map";
+
+//背景画像のパス
+//使い方　background-image: url(#{s.$imgPath}common/hoge.svg);
+$imgPath: "../img/";
+
+//スマホデザイン横幅
+$spDesign: 375; //375px
+//パソコンcontainer横幅
+$pcContainer: 1000; //1000px
+//パソコンデザイン横幅
+$pcDesign: 1360; //1360px
+
+// functionを定義するscssファイル
+// remの値を出す 10で割って px指定と同じサイズにする
+@function rem($value) {
+  @return #{math.div($value, 10)}rem;
+}
+
+// vw vh の値を出す（指定したい最大幅,物のサイズ）
+@function vw($width, $px) {
+  @return math.div($px, $width) * 100vw;
+}
+
+@function vh($height, $px) {
+  @return math.div($px, $height) * 100vh;
+}
+
+@function p($width, $px) {
+  @return math.div($px, $width) * 100%;
+}
+
+//line_height 行送り
+@function lh($fontSize, $lineHeight) {
+  @return math.div($lineHeight, $fontSize); //XDの時
+  // @return math.div($lineHeight, 100);//Figmaの時
+}
+
+// letter-spacing トラッキング
+@function ls($letter-spacing) {
+  @return #{math.div($letter-spacing, 1000)}em;
+}
+// @function ls($px, $size) {
+//   @return math.div($px, $size) * 1em; //字間px,文字サイズpx
+// }
+
+// ブレイクポイントの数値マップ
+$breakpoint-values: (
+  mdmax: 767px,
+  md: 768px,
+  lgmax: 991px,
+  lg: 992px,
+  tbmax: 1101px,
+  llg: 1221px,
+  xl: 1400px,
+  xxl: 1600px,
+);
+
+// ブレイクポイントからメディアクエリ文字列を生成する関数
+@function get-media-query($breakpoint) {
+  $value: map.get($breakpoint-values, $breakpoint);
+
+  @if $breakpoint == mdmax {
+    @return "only screen and (max-width: #{$value})";
+  } @else if $breakpoint == md {
+    @return "print, screen and (min-width: #{$value})";
+  } @else if $breakpoint == lgmax {
+    @return "print, screen and (max-width: #{$value})";
+  } @else if $breakpoint == lg {
+    @return "print, screen and (min-width: #{$value})";
+  } @else if $breakpoint == tbmax {
+    @return "only screen and (min-width: 769px) and (max-width: #{$value})";
+  } @else if $breakpoint == llg {
+    @return "print, screen and (min-width: #{$value})";
+  } @else if $breakpoint == xl {
+    @return "print, screen and (min-width: #{$value})";
+  } @else if $breakpoint == xxl {
+    @return "only screen and (min-width: #{$value})";
+  }
+
+  @return null;
+}
+
+// 後方互換性のための$breakpoints（既存コードが動作するように）
+$breakpoints: (
+  mdmax: get-media-query(mdmax),
+  md: get-media-query(md),
+  lgmax: get-media-query(lgmax),
+  lg: get-media-query(lg),
+  tbmax: get-media-query(tbmax),
+  llg: get-media-query(llg),
+  xl: get-media-query(xl),
+  xxl: get-media-query(xxl),
+);
+
+/*英語フォント*/
+%en-font {
+  font-family: "Montserrat", sans-serif;
+  font-optical-sizing: auto;
+  letter-spacing: 0;
+  -webkit-font-smoothing: antialiased; //safariで太さを調整するため https://on-ze.com/archives/562
+}

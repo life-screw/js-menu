@@ -1,0 +1,360 @@
+:root {
+	--color-base: #000000;
+	--color-main: #333333;
+	--color-accent: #9e9e9e;
+	--color-accent2: #f8f8f8;
+	--font-mincho: "Shippori Mincho B1", "Yu Mincho", "游明朝体", serif;
+	--font-serif: "Cormorant Infant", serif;
+	--font-gothic: "Noto Sans JP", sans-serif;
+}
+
+html {
+	-webkit-text-size-adjust: 100%;
+	box-sizing: border-box;
+	-moz-tab-size: 4;
+	-o-tab-size: 4;
+	font-size: 62.5%;
+	tab-size: 4;
+	word-break: normal;
+}
+
+body {
+	background-color: var(--color-main);
+	color: var(--color-base);
+	font-family: "Noto Sans JP", "Hiragino Kaku Gothic ProN", "Hiragino Sans", "BIZ UDPGothic", Meiryo, sans-serif;
+	font-size: 1rem;
+	font-weight: 500;
+	line-height: 1.73;
+	text-align: center;
+	-webkit-text-size-adjust: 100%;
+	font-feature-settings: "palt";
+	-webkit-font-smoothing: antialiased;
+}
+
+a {
+	color: var(--color-base);
+	transition: all 0.2s ease-in;
+}
+
+a,
+abbr,
+acronym,
+address,
+applet,
+big,
+blockquote,
+body,
+caption,
+cite,
+code,
+dd,
+del,
+dfn,
+div,
+dl,
+dt,
+em,
+fieldset,
+font,
+form,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+html,
+iframe,
+img,
+ins,
+kbd,
+label,
+legend,
+li,
+object,
+ol,
+p,
+pre,
+q,
+s,
+samp,
+small,
+span,
+strike,
+strong,
+sub,
+sup,
+table,
+tbody,
+td,
+tfoot,
+th,
+thead,
+tr,
+tt,
+ul,
+var {
+	border: 0;
+	font-family: inherit;
+	font-size: 100%;
+	font-style: inherit;
+	font-weight: inherit;
+	margin: 0;
+	outline: 0;
+	padding: 0;
+	vertical-align: baseline;
+}
+
+:focus {
+	outline: 0;
+}
+
+a,
+a:active,
+a:focus,
+a:hover,
+a:link,
+a:visited {
+	text-decoration: none;
+}
+
+table {
+	border-collapse: separate;
+	border-spacing: 0;
+}
+
+td,
+th {
+	font-weight: normal;
+	text-align: left;
+}
+
+iframe,
+img {
+	border: none;
+	text-decoration: none;
+}
+
+ol,
+ul {
+	list-style: none;
+}
+
+button,
+input,
+select,
+textarea {
+	font-family: inherit;
+	font-size: 100%;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+}
+
+select {
+	margin: inherit;
+}
+
+select::-ms-expand {
+	display: none;
+}
+
+hr {
+	background-color: #000;
+	border: 0;
+	color: #000;
+	height: 1px;
+	margin: 0;
+	padding: 0;
+}
+
+* {
+	border: 0;
+	box-sizing: border-box;
+	font-feature-settings: "palt" 1;
+	margin: 0;
+	padding: 0;
+}
+
+img {
+	height: auto;
+	max-width: 100%;
+	vertical-align: bottom;
+}
+
+a {
+	text-decoration: none;
+}
+
+strong {
+	font-weight: bold;
+}
+
+ul li a img {
+	margin: 0;
+	padding: 0;
+}
+
+li img {
+	vertical-align: bottom;
+}
+
+a:focus {
+	outline: none;
+	overflow: hidden;
+}
+
+ol,
+ul {
+	list-style: none outside none;
+}
+
+ol.link,
+ul.link {
+	list-style: outside none none;
+}
+
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+main {
+	display: block;
+}
+
+i {
+	font-style: normal;
+}
+
+/*英語フォント*/
+
+.c-inner {
+	margin: auto;
+	max-width: 1282px;
+	width: calc(100% - 16.8vw);
+}
+
+.c-inner-pc {
+	margin: auto;
+	max-width: 1282px;
+	width: calc(100% - 16.8vw);
+}
+
+.c-inner-sp {
+	margin: auto;
+	max-width: 1282px;
+	width: calc(100% - 16.8vw);
+}
+
+.c-inner-s {
+	margin: auto;
+	max-width: 1282px;
+	width: calc(100% - 16.8vw);
+}
+
+.c-inner-l {
+	margin: auto;
+	max-width: 1282px;
+	width: calc(100% - 16.8vw);
+}
+
+.c-text-demo {
+	font-size: max(10px, min(3.6vw, 1.62rem));
+	line-height: 1.5;
+	line-height: 1.6296296296;
+	margin: 1em auto;
+	text-align: left;
+	width: -moz-fit-content;
+	width: fit-content;
+}
+
+.c-title-demo {
+	font-size: 4.8vw;
+	line-height: 1.5;
+	margin: 1em auto;
+	white-space: nowrap;
+}
+
+.u-fitcover {
+	-o-object-fit: cover;
+	font-family: "object-fit: cover;";
+	height: 100%;
+	object-fit: cover;
+	width: 100%;
+}
+
+.u-fitcover img {
+	-o-object-fit: cover;
+	font-family: "object-fit: cover;";
+	height: 100%;
+	object-fit: cover;
+	width: 100%;
+	-o-object-position: top center;
+	object-position: top center;
+}
+
+/*PCのみ*/
+
+/*スマホのみ*/
+
+.u-upper {
+	text-transform: uppercase;
+}
+
+.l-main {
+	overflow: hidden;
+	position: relative;
+	z-index: 1;
+}
+
+@media (hover: hover) {
+
+a:hover {
+	opacity: 0.7;
+	-moz-opacity: 0.7;
+	-khtml-opacity: 0.7;
+}
+
+}
+
+@media print, screen and (min-width: 768px) {
+
+.c-inner-sp {
+	width: 100%;
+}
+
+.c-inner-s {
+	max-width: 622px;
+}
+
+.c-inner-l {
+	max-width: 1083px;
+}
+
+.c-text-demo {
+	font-size: 16px;
+}
+
+.c-title-demo {
+	font-size: 36px;
+}
+
+.u-only-sp {
+	display: none !important;
+}
+
+}
+
+@media only screen and (max-width: 767px) {
+
+.c-inner-pc {
+	width: 100%;
+}
+
+.u-only-pc {
+	display: none !important;
+}
+
+}
+

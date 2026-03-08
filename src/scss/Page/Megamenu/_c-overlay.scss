@@ -1,0 +1,17 @@
+//オーバーレイ
+.c-overlay {
+  display: block;
+  z-index: 998;
+  width: 100%;
+  height: 0; //アドレスバーより大きくする
+  position: fixed;
+  top: 0;
+  right: 0;
+  transition: height ease-out 0.3s;
+  background-color: #fff;
+
+  //クリックした時
+  &.is-active {
+    height: 100lvh; //アドレスバーより大きくする
+  }
+}

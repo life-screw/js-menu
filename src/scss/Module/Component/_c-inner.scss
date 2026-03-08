@@ -1,0 +1,40 @@
+@use "sass:math";
+@use "../../Setting/" as s;
+
+.c-inner {
+  @include s.inner;
+
+  &-pc {
+    @include s.inner;
+    @include s.media(mdmax) {
+      //スマホの時のみ
+      width: 100%;
+    }
+  }
+
+  &-sp {
+    @include s.inner;
+    @include s.media(md) {
+      //タブレット・pcの時
+      width: 100%;
+    }
+  }
+
+  //スモールサイズ
+  &-s {
+    @include s.inner;
+    @include s.media(md) {
+      //タブレット・pcの時
+      max-width: 622px;
+    }
+  }
+
+  //中サイズ
+  &-l {
+    @include s.inner;
+    @include s.media(md) {
+      //タブレット・pcの時
+      max-width: 1083px;
+    }
+  }
+}

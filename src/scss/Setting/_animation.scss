@@ -1,0 +1,22 @@
+// // ハンバーガーメニューのアニメーション-------
+// @keyframes fadeIn {
+// 	0% {
+// 		opacity: 0;
+// 	}
+
+// 	100% {
+// 		opacity: 1;
+// 	}
+// }
+
+// // フェードインアニメーション 関数化==============
+// // 通常のCSS-----------
+// @mixin fadeinAnim {
+// 	opacity: 0;
+// 	transition: opacity 0.6s ease-in-out 0s;
+// }
+
+// // .is-showを付与した時（アニメーション発火）-----------
+// @mixin fadeinAnimActive {
+// 	opacity: 1;
+// }

@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(ls -la /Users/igawayoshie/Dropbox/_WEBengineer/_template\\\\\\(WordPressなど\\\\\\)/github-pages/js-menu/)",
+      "Bash(cd /Users/igawayoshie/Dropbox/_WEBengineer/_template\\\\\\(WordPressなど\\\\\\)/github-pages/js-menu)",
+      "Bash(npm install)"
+    ]
+  }
+}

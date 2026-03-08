@@ -1,0 +1,49 @@
+:root {
+  --color-base: #000000;
+  --color-main: #333333;
+  --color-accent: #9e9e9e;
+  --color-accent2: #f8f8f8;
+  --font-mincho: "Shippori Mincho B1", "Yu Mincho", "游明朝体", serif;
+  --font-serif: "Cormorant Infant", serif;
+  --font-gothic: "Noto Sans JP", sans-serif;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  -moz-tab-size: 4;
+  -o-tab-size: 4;
+  tab-size: 4;
+  word-break: normal;
+  font-size: 62.5%; //10px
+}
+
+body {
+  background-color: var(--color-main);
+  color: var(--color-base);
+  // フォールバックを明示的に指定
+  font-family: "Noto Sans JP", "Hiragino Kaku Gothic ProN", "Hiragino Sans",
+    "BIZ UDPGothic", Meiryo, sans-serif;
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 1.73;
+  text-align: center;
+  -webkit-text-size-adjust: 100%;
+  font-feature-settings: "palt"; //自動カーニング
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  color: var(--color-base);
+  transition: all 0.2s ease-in;
+}
+
+a:hover {
+  @media (hover: hover) {
+    // ホバー可能なデバイス（主にPC）のみ
+    opacity: 0.7;
+    -moz-opacity: 0.7;
+    -khtml-opacity: 0.7;
+  }
+}
