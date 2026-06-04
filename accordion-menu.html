@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="format-detection" content="email=no,telephone=no,address=no" />
+    <title>アコーディオンメニュー(PC)</title>
+    <meta name="description" content="アコーディオンメニュー(PC)" />
+    <link rel="stylesheet" href="./dist/css/common.css" />
+    <!-- ▽▽▽ CSSコードはこちらから▽▽▽ -->
+    <link rel="stylesheet" href="./dist/css/accordion-menu.css" />
+    <!-- ▽▽▽ JavaScriptコードはこちらから▽▽▽ -->
+    <script src="./dist/js/accordion-menu.js" defer></script>
+  </head>
+  <body>
+    <header class="l-header js-header">
+      <div class="l-header__inner c-inner-pc">
+        <h1 class="l-header__logo">
+          <a href="" rel="home">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 100 100"
+              width="48"
+              height="48"
+              aria-hidden="true"
+            >
+              <defs>
+                <linearGradient
+                  id="logoGradient"
+                  x1="0%"
+                  y1="0%"
+                  x2="100%"
+                  y2="100%"
+                >
+                  <stop
+                    offset="0%"
+                    style="stop-color: #4a90e2; stop-opacity: 1"
+                  />
+                  <stop
+                    offset="100%"
+                    style="stop-color: #357abd; stop-opacity: 1"
+                  />
+                </linearGradient>
+              </defs>
+              <circle cx="50" cy="50" r="48" fill="url(#logoGradient)" />
+              <circle
+                cx="50"
+                cy="50"
+                r="45"
+                fill="none"
+                stroke="white"
+                stroke-width="1"
+                opacity="0.3"
+              />
+              <text
+                x="50"
+                y="60"
+                font-family="Arial, sans-serif"
+                font-size="40"
+                font-weight="bold"
+                fill="white"
+                text-anchor="middle"
+              >
+                L
+              </text>
+            </svg>
+          </a>
+        </h1>
+
+        <button
+          class="l-hum u-only-sp js-hum"
+          aria-label="メインメニュー"
+          aria-controls="hum-button"
+          aria-expanded="false"
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+
+        <nav class="l-humnav js-humnav" id="hum-button" aria-hidden="false">
+          <div class="l-humnav__inner">
+            <ul class="l-humnav-main">
+              <li
+                class="l-humnav-main__list l-humnav-main__list--has-sub js-accordion-sp"
+              >
+                <div class="l-humnav-main__list-box">
+                  <a href="" tabindex="-1">About</a>
+                  <button
+                    class="l-humnav-main__list-toggle js-accordion-btn-sp"
+                    tabindex="-1"
+                  ></button>
+                </div>
+                <!--サブメニュー-->
+                <ul class="l-humnav-sub js-accordion-contents-sp">
+                  <li class="l-humnav-sub__list">
+                    <a href="" tabindex="-1">代表メッセージ・会社概要</a>
+                  </li>
+                  <li class="l-humnav-sub__list">
+                    <a href="" tabindex="-1">会社の特徴/価値</a>
+                  </li>
+                </ul>
+                <!--/サブメニュー-->
+              </li>
+
+              <li
+                class="l-humnav-main__list l-humnav-main__list--has-sub js-accordion-sp"
+              >
+                <div class="l-humnav-main__list-box">
+                  <span class="a-tag" tabindex="-1">事業内容</span>
+                  <button
+                    class="l-humnav-main__list-toggle js-accordion-btn-sp"
+                    tabindex="-1"
+                  ></button>
+                </div>
+                <!--サブメニュー-->
+                <ul class="l-humnav-sub js-accordion-contents-sp">
+                  <li class="l-humnav-sub__list">
+                    <a href="" tabindex="-1">サービス1</a>
+                  </li>
+                  <li class="l-humnav-sub__list">
+                    <a href="" tabindex="-1">サービス2</a>
+                  </li>
+                  <li class="l-humnav-sub__list">
+                    <a href="" tabindex="-1">サービス3</a>
+                  </li>
+                </ul>
+                <!--/サブメニュー-->
+              </li>
+
+              <li
+                class="l-humnav-main__list l-humnav-main__list--has-sub js-accordion-sp"
+              >
+                <div class="l-humnav-main__list-box">
+                  <span class="a-tag" tabindex="-1">お知らせ</span>
+                  <button
+                    class="l-humnav-main__list-toggle js-accordion-btn-sp"
+                    tabindex="-1"
+                  ></button>
+                </div>
+                <!--サブメニュー-->
+                <ul class="l-humnav-sub js-accordion-contents-sp">
+                  <li class="l-humnav-sub__list">
+                    <a href="" tabindex="-1">ニュース1</a>
+                  </li>
+                  <li class="l-humnav-sub__list">
+                    <a href="" tabindex="-1">ニュース2</a>
+                  </li>
+                  <li class="l-humnav-sub__list">
+                    <a href="" tabindex="-1">ニュース3</a>
+                  </li>
+                </ul>
+                <!--/サブメニュー-->
+              </li>
+
+              <li
+                class="l-humnav-main__list l-humnav-main__list--has-sub js-accordion-sp"
+              >
+                <div class="l-humnav-main__list-box">
+                  <span class="a-tag" tabindex="-1">お問い合わせ</span>
+                  <button
+                    class="l-humnav-main__list-toggle js-accordion-btn-sp"
+                    tabindex="-1"
+                  ></button>
+                </div>
+                <!--サブメニュー-->
+                <ul class="l-humnav-sub js-accordion-contents-sp">
+                  <li class="l-humnav-sub__list">
+                    <a href="" tabindex="-1">お問い合わせフォーム</a>
+                  </li>
+                  <li class="l-humnav-sub__list">
+                    <a href="" tabindex="-1">FAQ</a>
+                  </li>
+                  <li class="l-humnav-sub__list">
+                    <a href="" tabindex="-1">アクセス</a>
+                  </li>
+                </ul>
+                <!--/サブメニュー-->
+              </li>
+            </ul>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <div class="c-overlay js-overlay"></div>
+    <main class="l-main">
+      <div
+        style="
+          background-color: #ccc;
+          margin: 20svh auto;
+          padding: 30px;
+          max-width: 800px;
+          text-align: left;
+        "
+      >
+        <p>
+          スマホの時はハンバーガーメニューとアコーディオンメニューが表示されます。
+          <br />
+          （JavaScriptで制御）
+        </p>
+        <p>
+          PCの時はアコーディオンメニューが表示されます。
+          <br />
+          （CSSで制御）
+          <br />
+          <br />
+        </p>
+
+        <p>
+          PCとスマホでHTMLを共通化しています。
+          <br />
+          ハンバーガーメニューのHTMLをコピーして、アコーディオンメニューのHTMLを生成しています。
+        </p>
+      </div>
+    </main>
+  </body>
+</html>

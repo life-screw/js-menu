@@ -1,0 +1,56 @@
+@use "sass:math";
+@use "../../Setting/" as s;
+
+.l-header {
+  position: fixed;
+  left: 0;
+  top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  // width: 100%;
+  // height: 60px;
+  z-index: 1000;
+  width: 100%;
+  @include s.media(mdmax) {
+    //スマホの時のみ
+    padding-top: 20px;
+    padding-inline: 25px;
+  }
+  @include s.media(md) {
+    //タブレット・pcの時
+    height: auto;
+    padding-top: 25px;
+    padding-bottom: 25px;
+  }
+  &__inner {
+    @include s.media(md) {
+      //タブレット・pcの時
+      display: flex;
+      justify-content: space-between;
+      margin: 0 auto;
+    }
+  }
+
+  &__logo {
+    text-align: left;
+    width: clamp(72px, s.vw(s.$spDesign, 132), 132px);
+    box-sizing: content-box;
+    z-index: 1000; //ハンバーガーメニュー表示時にロゴが隠れないようにする
+
+    @include s.media(md) {
+      //タブレット・pcの時
+      display: block;
+      width: min(72px, s.vw(s.$pcContainer, 72));
+    }
+
+    a {
+      display: block;
+    }
+
+    img {
+      width: 100%;
+      transition: all 0.3s ease;
+    }
+  }
+}
